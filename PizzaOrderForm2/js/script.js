@@ -116,14 +116,27 @@ var PizzaInfo = {
 }
 
 
+divdoughId.addEventListener("click", doughChoice, false);	
+var value;
+function doughChoice() {		
+value = document.getElementsByName('dough').value;
+console.log (" b"   );
+}	
+
 		
+		
+/*	
 var radios = document.getElementsByName('dough');
  for (i = 0; i < radios.length; i++) {
     if (radios[i].type == 'radio' && radios[i].checked) {
 		var radioValue = radios[i].value;
 		console.log (" a " + radioValue + " radios[i].value  " + radios[i].value );
     }
-}	
+}
+
+*/
+
+
 		
  for (var key in PizzaInfo) {
 	if (PizzaInfo.hasOwnProperty(key)) {
@@ -134,10 +147,10 @@ var radios = document.getElementsByName('dough');
 			//	console.log(prop + " = " + obj[prop]);
 			//	console.log (obj.dough + " a Selected: " + obj.size + " ($" + obj.price+") ");
 		
-				 console.log (" c " + radioValue);
-				 if (radioValue ==  obj.dough )
+				 console.log (" c " + value);
+				 if (value ==  obj.dough )
 				{	
-	//				console.log (obj.dough + "  b Selected: " + obj.size + " ($" + obj.price+") ");
+					console.log (obj.dough + "  b Selected: " + obj.size + " ($" + obj.price + ") ");
 					console.log(PizzaInfo.displayPizzaDough(obj.dough, obj.size, obj.price));
 				}
 		 //  }
@@ -149,6 +162,11 @@ var radios = document.getElementsByName('dough');
 		
 
 //  ----------------------------------------------------------------------------------------
+
+		
+		
+		
+		
 //    ----------------------------     FIELD VALIDATION    -----------   
 
 		var isValid = true;
@@ -175,7 +193,7 @@ var radios = document.getElementsByName('dough');
 		 alert (" Invalid name " );
 		 isValid = false;
      } 
-	
+
 		
 // STATE 		
 	var statePattern = /^[A-Za-z]{2}$/; 	
@@ -201,22 +219,22 @@ var radios = document.getElementsByName('dough');
 	
 // ZIP		
 	// validate the zip code entry (regular expression)
-			var zipPattern = /^\d{5}(-\d{4})?$/;
-			var zip = document.forms["myForm"]["zip"].value;
+	var zipPattern = /^\d{5}(-\d{4})?$/;
+	var zip = document.forms["myForm"]["zip"].value;
 		{ 
-			if(document.forms["myForm"]["zip"].value.match(zipPattern))  
+	if(document.forms["myForm"]["zip"].value.match(zipPattern))  
         {  
-		    document.forms["myForm"]["zip"].focus(); 
-           isValid = true;  
+		document.forms["myForm"]["zip"].focus(); 
+        isValid = true;  
         }   else  if(document.forms["myForm"]["zip"].value == null || document.forms["myForm"]["zip"].value == "") 
         {  
-			 document.forms["myForm"]["zip"].focus(); 
-            isValid = false;
-			 alert (" missing zip " );
+		 document.forms["myForm"]["zip"].focus(); 
+         isValid = false;
+	     alert (" missing zip " );
 		} else {
-			 document.forms["myForm"]["zip"].focus(); 
-           isValid = false; 
-			 alert (" Invalid  zip " );
+	     document.forms["myForm"]["zip"].focus(); 
+         isValid = false; 
+	     alert (" Invalid  zip " );
           }  
 		}
 				
@@ -255,19 +273,176 @@ isValid = false;
 }
 
 		
+//  ----------------------------------------------------------------------------------------
+		
+
+		
+// Billing Information NAME 	
+	var lettersPattern = /^[A-Za-z]+$/;
+ //   var x = document.forms["myForm"]["bifname"].value;
+	
+    if (document.forms["myForm"]["bifname"].value == null || document.forms["myForm"]["bifname"].value == "") {
+		 document.forms["myForm"]["bifname"].focus(); 
+       isValid = false;
+		 alert (" mssing Business Info name " );
+	  }
+	else  if(document.forms["myForm"]["bifname"].value.match(lettersPattern))	
+	{  
+	  document.forms["myForm"]["bifname"].focus(); 
+	  isValid = true;  
+	}
+	 else
+	 {
+	  document.forms["myForm"]["bifname"].focus(); 
+		 alert (" Invalid Business Info name " );
+		 isValid = false;
+     } 
+	
+		
+// Billing Information STATE 		
+	var statePattern = /^[A-Za-z]{2}$/; 	
+ //   var x = document.forms["myForm"]["bistate"].value;
+	// alert ("  Business Info  state " );
+	
+    if (document.forms["myForm"]["bistate"].value == null || document.forms["myForm"]["bistate"].value == "") {
+		 document.forms["myForm"]["bistate"].focus(); 
+       isValid = false;
+		 alert (" Missing Business Info state " );
+	  }
+	else  if(document.forms["myForm"]["bistate"].value.match(statePattern))	
+	{  
+	    document.forms["myForm"]["bistate"].focus(); 
+	isValid = true;  
+	}
+	 else
+	 {   
+	  document.forms["myForm"]["bistate"].focus(); 
+		  alert (" Invalid Business Info  state " );
+		 isValid = false;
+     } 
+		
+	
+// Billing Information ZIP		
+	// validate the zip code entry (regular expression)
+			var zipPattern = /^\d{5}(-\d{4})?$/;
+//			var zip = document.forms["myForm"]["bizip"].value;
+		{ 
+			if(document.forms["myForm"]["bizip"].value.match(zipPattern))  
+        {  
+		    document.forms["myForm"]["bizip"].focus(); 
+           isValid = true;  
+        }   else  if(document.forms["myForm"]["bizip"].value == null || document.forms["myForm"]["bizip"].value == "") 
+        {  
+			 document.forms["myForm"]["bizip"].focus(); 
+            isValid = false;
+			 alert (" missing  Business Info zip " );
+		} else {
+			 document.forms["myForm"]["bizip"].focus(); 
+           isValid = false; 
+			 alert (" Invalid Business Info zip " );
+          }  
+		}
+				
+
+//  ----------------------------------------------------------------------------------------
+		
+	
+		
+function validate(){
+if (document.getElementById('di').checked){
+          alert("checked") ;
+}else{
+alert("You didn't check it! Let me check it for you.")
+}
+}		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+//  ----------------------------------------------------------------------------------------
+		
 // prevent the submission of the form if any entries are invalid 
 	if (isValid == false) {
 		event.preventDefault();				
 		}	
 
 		
-		
-		
+
+}         /*   === ======= END OF VALIDATE FUNCTION =========  */
+
+//  ----------------------------------------------------------------------------------------
+
+//   SAME AS DELIVERY INFO CHECKBOX  
+
+function checkDelivery(){
+if (document.getElementById('di').checked == 1) {
+          alert("checked") ;
+}else{
+       alert("You didn't check it! Let me check it for you.");
+    }
+}		
+
+document.getElementById('bifnameid').value = document.getElementById('fname').value;
 
 
-}         /*   === ======= END OF FUNCTION =========  */
 
-	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //  ----------------------------------------------------------------------------------------
